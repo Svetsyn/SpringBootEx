@@ -1,7 +1,7 @@
-package bg.softuni.mobilele.mobilele.entities;
+package bg.softuni.mobilele.mobilele.model.entities;
 
-import bg.softuni.mobilele.mobilele.entities.enums.Engine;
-import bg.softuni.mobilele.mobilele.entities.enums.Transmission;
+import bg.softuni.mobilele.mobilele.model.entities.enums.Engine;
+import bg.softuni.mobilele.mobilele.model.entities.enums.Transmission;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
