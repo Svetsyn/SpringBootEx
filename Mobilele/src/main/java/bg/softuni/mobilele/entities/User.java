@@ -1,4 +1,4 @@
-package bg.softuni.entities;
+package bg.softuni.mobilele.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;

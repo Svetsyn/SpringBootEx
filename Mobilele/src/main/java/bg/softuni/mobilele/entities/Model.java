@@ -1,12 +1,12 @@
-package bg.softuni.entities;
+package bg.softuni.mobilele.entities;
 
-import bg.softuni.entities.enums.ModelCategory;
+import bg.softuni.mobilele.entities.enums.ModelCategory;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "models")
-public class Model extends BaseEntity{
+public class Model extends BaseEntity {
     private String name;
 
     @Enumerated(EnumType.STRING)

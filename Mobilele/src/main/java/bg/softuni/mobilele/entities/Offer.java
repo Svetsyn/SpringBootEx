@@ -1,14 +1,14 @@
-package bg.softuni.entities;
+package bg.softuni.mobilele.entities;
 
-import bg.softuni.entities.enums.Engine;
-import bg.softuni.entities.enums.Transmission;
+import bg.softuni.mobilele.entities.enums.Engine;
+import bg.softuni.mobilele.entities.enums.Transmission;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "offers")
-public class Offer extends BaseEntity{
+public class Offer extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Engine engine;
