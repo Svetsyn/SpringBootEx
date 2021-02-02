@@ -3,7 +3,7 @@ package bg.softuni.mobilele.mobilele.model.entities;
 import javax.persistence.*;
 import java.time.Instant;
 @MappedSuperclass
-public  class BaseEntity {
+public  abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
