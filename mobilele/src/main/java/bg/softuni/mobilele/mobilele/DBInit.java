@@ -2,14 +2,18 @@ package bg.softuni.mobilele.mobilele;
 
 import bg.softuni.mobilele.mobilele.model.entities.Brand;
 import bg.softuni.mobilele.mobilele.model.entities.Model;
+import bg.softuni.mobilele.mobilele.model.entities.Offer;
 import bg.softuni.mobilele.mobilele.model.entities.enums.Category;
+import bg.softuni.mobilele.mobilele.model.entities.enums.Engine;
+import bg.softuni.mobilele.mobilele.model.entities.enums.Transmission;
 import bg.softuni.mobilele.mobilele.repository.BrandRepository;
 import bg.softuni.mobilele.mobilele.repository.ModelRepository;
-import org.dom4j.rule.Mode;
+import bg.softuni.mobilele.mobilele.repository.OfferRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.time.Instant;
 import java.util.List;
 
@@ -18,10 +22,12 @@ public class DBInit implements CommandLineRunner {
 
     private final BrandRepository brandRepository;
     private final ModelRepository modelRepository;
+    private final OfferRepository offerRepository;
 
-    public DBInit(BrandRepository brandRepository, ModelRepository modelRepository) {
+    public DBInit(BrandRepository brandRepository, ModelRepository modelRepository, OfferRepository offerRepository) {
         this.brandRepository = brandRepository;
         this.modelRepository = modelRepository;
+        this.offerRepository = offerRepository;
     }
 
     @Override
@@ -39,10 +45,27 @@ public class DBInit implements CommandLineRunner {
 
         brandRepository.saveAll(List.of(fordBrand, hondaBrand));
 
-        initFiesta(fordBrand);
+        Model fiestaModel = initFiesta(fordBrand);
         initEscort(fordBrand);
         initialNC750S(hondaBrand);
+        createFiestaOffer(fiestaModel);
+    }
+    private void createFiestaOffer(Model model){
+        Offer fiestaOffer= new Offer();
+        fiestaOffer.setEngine(Engine.GASOLINE);
+        fiestaOffer.setImageUrl("https://upload.wikimedia.org/wikipedia/" +
+                "commons/thumb/7/7d/2017_Ford_Fiesta_Zetec_Turbo_1.0_Front.jpg/" +
+                "1280px-2017_Ford_Fiesta_Zetec_Turbo_1.0_Front.jpg");
+        fiestaOffer.setMileAge(80000);
+        fiestaOffer.setPrice(BigDecimal.valueOf(10000));
+        fiestaOffer.setYear(2016);
+        fiestaOffer.setDescription("Уникати с криви врати!");
+        fiestaOffer.setTransmission(Transmission.MANUAL);
+        fiestaOffer.setModel(model);
+        fiestaOffer.setCreated(Instant.now());
+        fiestaOffer.setUpdated(Instant.now());
 
+        this.offerRepository.save(fiestaOffer);
     }
 
     private Model initialNC750S(Brand hondaBrand) {

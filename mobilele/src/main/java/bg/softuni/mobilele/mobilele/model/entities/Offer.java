@@ -4,7 +4,7 @@ import bg.softuni.mobilele.mobilele.model.entities.enums.Engine;
 import bg.softuni.mobilele.mobilele.model.entities.enums.Transmission;
 
 import javax.persistence.*;
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "offers")
@@ -15,7 +15,7 @@ public class Offer extends BaseEntity{
     private String imageUrl;
     @Column(name = "mile_age")
     private int mileAge;
-    private DecimalFormat price;
+    private BigDecimal price;
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
     private int year;
@@ -59,11 +59,11 @@ public class Offer extends BaseEntity{
         this.mileAge = mileAge;
     }
 
-    public DecimalFormat getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(DecimalFormat price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
