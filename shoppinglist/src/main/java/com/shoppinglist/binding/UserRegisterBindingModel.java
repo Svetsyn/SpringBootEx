@@ -2,6 +2,7 @@ package com.shoppinglist.binding;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class UserRegisterBindingModel {
@@ -25,6 +26,7 @@ public class UserRegisterBindingModel {
     }
 
     @Email(message = "Email must contain '@'")
+    @NotBlank
     public String getEmail() {
         return email;
     }
@@ -43,8 +45,8 @@ public class UserRegisterBindingModel {
         this.password = password;
     }
 
-    @NotBlank(message = "Password can not be empty")
-    @Size(min = 3, max = 20, message = "Password length must be between 3 and 20 characters")
+//    @NotBlank(message = "Password can not be empty")
+//    @Size(min = 3, max = 20, message = "Password length must be between 3 and 20 characters")
     public String getConfirmPassword() {
         return confirmPassword;
     }
