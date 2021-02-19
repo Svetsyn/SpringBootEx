@@ -22,4 +22,14 @@ public class UserServiceImpl implements UserService {
 
     userRepository.save(modelMapper.map(userServiceModel, User.class));
     }
+
+    @Override
+    public UserServiceModel findByNameAndPassword(String username, String password) {
+//        User user = userRepository.findByUsernameAndPassword(username, password).orElse(null);
+//        return modelMapper.map(user,UserServiceModel.class);
+
+        return userRepository.findByUsernameAndPassword(username,password)
+                .map(user->modelMapper.map(user,UserServiceModel.class))
+                .orElse(null);
+    }
 }
