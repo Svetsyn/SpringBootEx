@@ -1,14 +1,14 @@
 package com.shoppinglist.repository;
 
-import com.shoppinglist.model.entity.Category;
 import com.shoppinglist.model.entity.CategoryName;
+import com.shoppinglist.model.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category,Long> {
+public interface ProductRepository extends JpaRepository<Product,Long> {
 
-
+    List<Product>findAllByCategory_CategoryName(CategoryName categoryName);
 }
